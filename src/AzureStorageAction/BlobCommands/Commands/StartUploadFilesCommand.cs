@@ -33,6 +33,8 @@ namespace AzureStorageAction.BlobCommands.Commands
                 {
                     FileInfo file = new FileInfo(filePath);
 
+					Console.WriteLine("Processing file: {0}", file.FullName);
+
                     string fileName = file.GetFileName(rootPath);
 
                     BlobClient blobClient = (await BlobContainerClientSingleton.Instance.GetBlobContainerClient()).GetBlobClient(fileName);
