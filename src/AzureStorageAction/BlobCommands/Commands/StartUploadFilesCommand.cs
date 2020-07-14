@@ -17,10 +17,14 @@ namespace AzureStorageAction.BlobCommands.Commands
         public async Task ExecuteAction()
         {
             string folderName = ArgumentContext.Instance.GetValue(ArgumentEnum.FolderName);
+
+			Console.WriteLine("Folder name argument: {0}", folderName);
+
             string rootPath = string.IsNullOrWhiteSpace(folderName)
                 ? Environment.CurrentDirectory
                 : Path.Combine(Environment.CurrentDirectory, folderName);
 
+			Console.WriteLine("Root path: {0}", rootPath);
 
             if (Directory.Exists(rootPath))
             {
@@ -57,7 +61,7 @@ namespace AzureStorageAction.BlobCommands.Commands
             }
             else
             {
-                throw new ArgumentException(string.Format("The path '{0}' don´t exists.", rootPath));
+                throw new ArgumentException(string.Format("The path '{0}' doesn't exist.", rootPath));
             }
         }
     }
